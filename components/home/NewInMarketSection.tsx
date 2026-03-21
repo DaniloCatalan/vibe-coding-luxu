@@ -1,7 +1,19 @@
-import { newInMarket } from "@/lib/mockData";
+import { Property } from "@/lib/properties";
 import { StandardPropertyCard } from "../ui/PropertyCard";
+import Pagination from "./Pagination";
+import { Suspense } from "react";
 
-export default function NewInMarketSection() {
+interface NewInMarketSectionProps {
+  properties: Property[];
+  currentPage: number;
+  totalPages: number;
+}
+
+export default function NewInMarketSection({
+  properties,
+  currentPage,
+  totalPages,
+}: NewInMarketSectionProps) {
   return (
     <section>
       <div className="flex items-end justify-between mb-8">
@@ -27,26 +39,18 @@ export default function NewInMarketSection() {
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {newInMarket.map((property, index) => {
-          let hiddenClass = "";
-          if (index === 4) hiddenClass = "max-xl:hidden xl:flex";
-          if (index === 5) hiddenClass = "max-lg:hidden lg:flex";
-
-          return (
-            <StandardPropertyCard
-              key={property.id}
-              property={property}
-              hiddenClass={hiddenClass}
-            />
-          );
-        })}
+        {properties.map((property) => (
+          <StandardPropertyCard
+            key={property.id}
+            property={property}
+            hiddenClass=""
+          />
+        ))}
       </div>
 
-      <div className="mt-12 text-center">
-        <button className="px-8 py-3 bg-white border border-nordic-dark/10 hover:border-mosque hover:text-mosque text-nordic-dark font-medium rounded-lg transition-all hover:shadow-md cursor-pointer">
-          Load more properties
-        </button>
-      </div>
+      <Suspense fallback={null}>
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      </Suspense>
     </section>
   );
 }

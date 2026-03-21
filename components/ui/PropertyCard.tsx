@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Property } from "@/lib/mockData";
+import { Property } from "@/lib/properties";
 
 export function FeaturedPropertyCard({ property }: { property: Property }) {
   return (
