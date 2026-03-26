@@ -14,6 +14,7 @@ export interface Property {
   type: "sale" | "rent";
   period?: "/mo";
   category: "featured" | "new_in_market";
+  isFeatured?: boolean;
 }
 
 // Map snake_case DB rows → camelCase Property
@@ -33,6 +34,7 @@ function mapRow(row: any): Property {
     type: row.type,
     period: row.period ?? undefined,
     category: row.category,
+    isFeatured: row.is_featured ?? false,
   };
 }
 
@@ -74,7 +76,7 @@ export async function getFeaturedProperties(): Promise<Property[]> {
   const { data, error } = await supabase
     .from("properties")
     .select("*")
-    .eq("category", "featured")
+    .eq("is_featured", true)
     .order("created_at", { ascending: true });
 
   if (error) {
