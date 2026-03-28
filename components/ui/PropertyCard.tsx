@@ -7,7 +7,7 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
     <Link href={`/properties/${property.slug}`} className="block group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer hover:shadow-card transition-all duration-300">
       <div className="aspect-[4/3] w-full overflow-hidden relative">
         <Image
-          src={property.imageUrl}
+          src={property.images[0]}
           alt={property.title}
           fill
           className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -60,7 +60,7 @@ export function StandardPropertyCard({ property, hiddenClass = "" }: { property:
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={property.imageUrl}
+          src={property.images[0]}
           alt={property.title}
           fill
           className="object-cover transition-transform duration-500 group-hover:scale-110"

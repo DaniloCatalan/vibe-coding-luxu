@@ -9,14 +9,13 @@ export interface Property {
   beds: number;
   baths: number;
   sqm: number;
-  imageUrl: string;
   badge?: "Exclusive" | "New Arrival" | "FOR SALE" | "FOR RENT";
   type: "sale" | "rent";
   period?: "/mo";
   category: "featured" | "new_in_market";
   isFeatured?: boolean;
   slug: string;
-  images?: string[];
+  images: string[];
   lat?: number;
   lng?: number;
 }
@@ -33,7 +32,6 @@ function mapRow(row: any): Property {
     beds: Number(row.beds),
     baths: Number(row.baths),
     sqm: Number(row.sqm),
-    imageUrl: row.image_url,
     badge: row.badge ?? undefined,
     type: row.type,
     period: row.period ?? undefined,

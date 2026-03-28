@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     title: `${property.title} | LuxeEstate`,
     description: `Stunning property located at ${property.location} - ${property.beds} beds, ${property.baths} baths for ${property.price}.`,
     openGraph: {
-      images: [property.imageUrl],
+      images: [property.images[0]],
     },
   };
 }
@@ -39,7 +39,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
         <div className="lg:col-span-8 space-y-4">
           <div className="relative aspect-[16/10] overflow-hidden rounded-xl shadow-sm group">
             <Image 
-              src={property.imageUrl} 
+              src={property.images[0]} 
               alt={property.title}
               fill
               priority
