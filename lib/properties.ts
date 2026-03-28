@@ -15,6 +15,10 @@ export interface Property {
   period?: "/mo";
   category: "featured" | "new_in_market";
   isFeatured?: boolean;
+  slug: string;
+  images?: string[];
+  lat?: number;
+  lng?: number;
 }
 
 // Map snake_case DB rows → camelCase Property
@@ -35,6 +39,10 @@ function mapRow(row: any): Property {
     period: row.period ?? undefined,
     category: row.category,
     isFeatured: row.is_featured ?? false,
+    slug: row.slug,
+    images: row.images ?? [],
+    lat: row.lat ? Number(row.lat) : undefined,
+    lng: row.lng ? Number(row.lng) : undefined,
   };
 }
 
@@ -85,4 +93,19 @@ export async function getFeaturedProperties(): Promise<Property[]> {
   }
 
   return (data ?? []).map(mapRow);
+}
+
+export async function getPropertyBySlug(slug: string): Promise<Property | null> {
+  const { data, error } = await supabase
+    .from("properties")
+    .select("*")
+    .eq("slug", slug)
+    .single();
+
+  if (error || !data) {
+    console.error("Error fetching property by slug:", error);
+    return null;
+  }
+
+  return mapRow(data);
 }

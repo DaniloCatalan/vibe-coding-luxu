@@ -1,9 +1,10 @@
 import Image from "next/image";
+import Link from "next/link";
 import { Property } from "@/lib/properties";
 
 export function FeaturedPropertyCard({ property }: { property: Property }) {
   return (
-    <div className="group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer">
+    <Link href={`/properties/${property.slug}`} className="block group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer hover:shadow-card transition-all duration-300">
       <div className="aspect-[4/3] w-full overflow-hidden relative">
         <Image
           src={property.imageUrl}
@@ -47,14 +48,15 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }
 
 export function StandardPropertyCard({ property, hiddenClass = "" }: { property: Property; hiddenClass?: string }) {
   return (
-    <article
-      className={`bg-white rounded-xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-300 group cursor-pointer h-full flex flex-col ${hiddenClass}`}
+    <Link
+      href={`/properties/${property.slug}`}
+      className={`block bg-white rounded-xl overflow-hidden shadow-card hover:shadow-soft transition-all duration-300 group cursor-pointer h-full flex flex-col ${hiddenClass}`}
     >
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
@@ -101,6 +103,6 @@ export function StandardPropertyCard({ property, hiddenClass = "" }: { property:
           </div>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
