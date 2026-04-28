@@ -16,5 +16,66 @@
     "filter_villa": "Villa",
     "filter_penthouse": "Penthouse",
     "filters": "Filtros"
+  },
+  "property_page": {
+    "view_all_photos": "Ver Todas las Fotos",
+    "new_badge": "Nuevo",
+    "top_rated_agent": "Agente Destacado",
+    "schedule_visit": "Agendar Visita",
+    "contact_agent": "Contactar Agente",
+    "view_full_map": "Ver mapa completo",
+    "property_features": "Características de la Propiedad",
+    "square_meters": "Metros Cuadrados",
+    "bedrooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "garage": "Garaje",
+    "about_this_home": "Acerca de esta propiedad",
+    "read_more": "Leer más",
+    "amenities": "Comodidades",
+    "estimated_payment": "Pago Estimado",
+    "starting_from": "Desde",
+    "with_down_payment": "con 20% de entrada",
+    "calculate_mortgage": "Calcular Hipoteca"
+  },
+  "featured": {
+    "title": "Colecciones Destacadas",
+    "subtitle": "Propiedades seleccionadas para los más exigentes.",
+    "view_all": "Ver todo"
+  },
+  "new_in_market": {
+    "title": "Nuevas en el Mercado",
+    "subtitle": "Nuevas oportunidades añadidas esta semana.",
+    "all": "Todo",
+    "buy": "Comprar",
+    "rent": "Alquilar"
+  },
+  "property_card": {
+    "beds": "Hab",
+    "baths": "Baños"
+  },
+  "search": {
+    "home": "Inicio",
+    "search_results": "Resultados de Búsqueda",
+    "property_found": "Propiedad Encontrada",
+    "properties_found": "Propiedades Encontradas",
+    "based_on_filters": "Basado en tus filtros seleccionados.",
+    "no_properties_found": "No se encontraron propiedades",
+    "try_adjusting_filters": "No pudimos encontrar propiedades que coincidan con tus criterios de búsqueda. Intenta ajustar los filtros o ampliar el área de búsqueda.",
+    "back_to_home": "Volver al Inicio"
+  },
+  "filters_modal": {
+    "title": "Filtros",
+    "location": "Ubicación",
+    "location_placeholder": "Ciudad, barrio o dirección",
+    "price_range": "Rango de Precios",
+    "min_price": "Precio Mín",
+    "max_price": "Precio Máx",
+    "property_type": "Tipo de Propiedad",
+    "any_type": "Cualquier Tipo",
+    "bedrooms": "Habitaciones",
+    "bathrooms": "Baños",
+    "amenities": "Comodidades",
+    "clear_all": "Borrar filtros",
+    "search_homes": "Buscar Propiedades"
   }
 }

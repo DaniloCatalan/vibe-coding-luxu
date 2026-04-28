@@ -16,5 +16,66 @@
     "filter_villa": "Villa",
     "filter_penthouse": "Penthouse",
     "filters": "Filters"
+  },
+  "property_page": {
+    "view_all_photos": "View All Photos",
+    "new_badge": "New",
+    "top_rated_agent": "Top Rated Agent",
+    "schedule_visit": "Schedule Visit",
+    "contact_agent": "Contact Agent",
+    "view_full_map": "View full map",
+    "property_features": "Property Features",
+    "square_meters": "Square Meters",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "garage": "Garage",
+    "about_this_home": "About this home",
+    "read_more": "Read more",
+    "amenities": "Amenities",
+    "estimated_payment": "Estimated Payment",
+    "starting_from": "Starting from",
+    "with_down_payment": "with 20% down",
+    "calculate_mortgage": "Calculate Mortgage"
+  },
+  "featured": {
+    "title": "Featured Collections",
+    "subtitle": "Curated properties for the discerning eye.",
+    "view_all": "View all"
+  },
+  "new_in_market": {
+    "title": "New in Market",
+    "subtitle": "Fresh opportunities added this week.",
+    "all": "All",
+    "buy": "Buy",
+    "rent": "Rent"
+  },
+  "property_card": {
+    "beds": "Beds",
+    "baths": "Baths"
+  },
+  "search": {
+    "home": "Home",
+    "search_results": "Search Results",
+    "property_found": "Property Found",
+    "properties_found": "Properties Found",
+    "based_on_filters": "Based on your selected filters.",
+    "no_properties_found": "No properties found",
+    "try_adjusting_filters": "We couldn't find any properties matching your current search criteria. Try adjusting your filters or expanding your search area.",
+    "back_to_home": "Back to Home"
+  },
+  "filters_modal": {
+    "title": "Filters",
+    "location": "Location",
+    "location_placeholder": "City, neighborhood, or address",
+    "price_range": "Price Range",
+    "min_price": "Min Price",
+    "max_price": "Max Price",
+    "property_type": "Property Type",
+    "any_type": "Any Type",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "amenities": "Amenities & Features",
+    "clear_all": "Clear all filters",
+    "search_homes": "Search Homes"
   }
 }

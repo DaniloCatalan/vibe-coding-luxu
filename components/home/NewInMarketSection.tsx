@@ -1,7 +1,10 @@
+"use client";
+
 import { Property } from "@/lib/properties";
 import { StandardPropertyCard } from "../ui/PropertyCard";
 import Pagination from "./Pagination";
 import { Suspense } from "react";
+import { useTranslation } from "@/lib/i18n/TranslationContext";
 
 interface NewInMarketSectionProps {
   properties: Property[];
@@ -14,26 +17,28 @@ export default function NewInMarketSection({
   currentPage,
   totalPages,
 }: NewInMarketSectionProps) {
+  const { t } = useTranslation();
+
   return (
     <section>
       <div className="flex items-end justify-between mb-8">
         <div>
           <h2 className="text-2xl font-light text-nordic-dark">
-            New in Market
+            {t('new_in_market.title')}
           </h2>
           <p className="text-nordic-muted mt-1 text-sm">
-            Fresh opportunities added this week.
+            {t('new_in_market.subtitle')}
           </p>
         </div>
         <div className="hidden md:flex bg-white p-1 rounded-lg">
           <button className="px-4 py-1.5 rounded-md text-sm font-medium bg-nordic-dark text-white shadow-sm">
-            All
+            {t('new_in_market.all')}
           </button>
           <button className="px-4 py-1.5 rounded-md text-sm font-medium text-nordic-muted hover:text-nordic-dark">
-            Buy
+            {t('new_in_market.buy')}
           </button>
           <button className="px-4 py-1.5 rounded-md text-sm font-medium text-nordic-muted hover:text-nordic-dark">
-            Rent
+            {t('new_in_market.rent')}
           </button>
         </div>
       </div>

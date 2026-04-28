@@ -16,5 +16,66 @@
     "filter_villa": "Villa",
     "filter_penthouse": "Penthouse",
     "filters": "Filtres"
+  },
+  "property_page": {
+    "view_all_photos": "Voir Toutes les Photos",
+    "new_badge": "Nouveau",
+    "top_rated_agent": "Agent Mieux Noté",
+    "schedule_visit": "Planifier une Visite",
+    "contact_agent": "Contacter l'Agent",
+    "view_full_map": "Voir la carte complète",
+    "property_features": "Caractéristiques de la Propriété",
+    "square_meters": "Mètres Carrés",
+    "bedrooms": "Chambres",
+    "bathrooms": "Salles de bain",
+    "garage": "Garage",
+    "about_this_home": "À propos de ce bien",
+    "read_more": "Lire la suite",
+    "amenities": "Commodités",
+    "estimated_payment": "Paiement Estimé",
+    "starting_from": "À partir de",
+    "with_down_payment": "avec 20% d'apport",
+    "calculate_mortgage": "Calculer l'Hypothèque"
+  },
+  "featured": {
+    "title": "Collections en Vedette",
+    "subtitle": "Des propriétés sélectionnées pour les plus exigeants.",
+    "view_all": "Voir tout"
+  },
+  "new_in_market": {
+    "title": "Nouveautés sur le Marché",
+    "subtitle": "De nouvelles opportunités ajoutées cette semaine.",
+    "all": "Tout",
+    "buy": "Acheter",
+    "rent": "Louer"
+  },
+  "property_card": {
+    "beds": "Ch",
+    "baths": "Sdb"
+  },
+  "search": {
+    "home": "Accueil",
+    "search_results": "Résultats de Recherche",
+    "property_found": "Propriété Trouvée",
+    "properties_found": "Propriétés Trouvées",
+    "based_on_filters": "Basé sur vos filtres sélectionnés.",
+    "no_properties_found": "Aucune propriété trouvée",
+    "try_adjusting_filters": "Nous n'avons trouvé aucune propriété correspondant à vos critères de recherche. Essayez d'ajuster vos filtres ou d'élargir votre zone de recherche.",
+    "back_to_home": "Retour à l'Accueil"
+  },
+  "filters_modal": {
+    "title": "Filtres",
+    "location": "Emplacement",
+    "location_placeholder": "Ville, quartier ou adresse",
+    "price_range": "Fourchette de Prix",
+    "min_price": "Prix Min",
+    "max_price": "Prix Max",
+    "property_type": "Type de Propriété",
+    "any_type": "Tout Type",
+    "bedrooms": "Chambres",
+    "bathrooms": "Salles de bain",
+    "amenities": "Commodités",
+    "clear_all": "Effacer les filtres",
+    "search_homes": "Rechercher des Propriétés"
   }
 }

@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { Property } from "@/lib/properties";
+import { useTranslation } from "@/lib/i18n/TranslationContext";
 
 export function FeaturedPropertyCard({ property }: { property: Property }) {
+  const { t } = useTranslation();
+
   return (
     <Link href={`/properties/${property.slug}`} className="block group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer hover:shadow-card transition-all duration-300">
       <div className="aspect-[4/3] w-full overflow-hidden relative">
@@ -10,6 +15,7 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
           src={property.images[0]}
           alt={property.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
           className="object-cover transition-transform duration-700 group-hover:scale-105"
         />
         {property.badge && (
@@ -38,10 +44,10 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
         </div>
         <div className="flex items-center gap-6 mt-6 pt-6 border-t border-nordic-dark/5">
           <div className="flex items-center gap-2 text-nordic-muted text-sm">
-            <span className="material-icons text-lg">king_bed</span> {property.beds} Beds
+            <span className="material-icons text-lg">king_bed</span> {property.beds} {t('property_card.beds')}
           </div>
           <div className="flex items-center gap-2 text-nordic-muted text-sm">
-            <span className="material-icons text-lg">bathtub</span> {property.baths} Baths
+            <span className="material-icons text-lg">bathtub</span> {property.baths} {t('property_card.baths')}
           </div>
           <div className="flex items-center gap-2 text-nordic-muted text-sm">
             <span className="material-icons text-lg">square_foot</span> {property.sqm.toLocaleString()} m²
@@ -53,6 +59,8 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
 }
 
 export function StandardPropertyCard({ property, hiddenClass = "" }: { property: Property; hiddenClass?: string }) {
+  const { t } = useTranslation();
+
   return (
     <Link
       href={`/properties/${property.slug}`}
@@ -63,6 +71,7 @@ export function StandardPropertyCard({ property, hiddenClass = "" }: { property:
           src={property.images[0]}
           alt={property.title}
           fill
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
           className="object-cover transition-transform duration-500 group-hover:scale-110"
         />
         <button className="absolute top-3 right-3 p-2 bg-white/90 rounded-full hover:bg-mosque hover:text-white transition-colors text-nordic-dark">
