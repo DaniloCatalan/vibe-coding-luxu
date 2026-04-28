@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "buy": "Buy",
+    "rent": "Rent",
+    "sell": "Sell",
+    "saved": "Saved Homes"
+  },
+  "hero": {
+    "title_start": "Find your",
+    "title_highlight": "sanctuary",
+    "search_placeholder": "Search by city, neighborhood, or address...",
+    "search_button": "Search",
+    "filter_all": "All",
+    "filter_house": "House",
+    "filter_apartment": "Apartment",
+    "filter_villa": "Villa",
+    "filter_penthouse": "Penthouse",
+    "filters": "Filters"
+  }
+}

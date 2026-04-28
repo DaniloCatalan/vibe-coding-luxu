@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "buy": "Comprar",
+    "rent": "Alquilar",
+    "sell": "Vender",
+    "saved": "Guardados"
+  },
+  "hero": {
+    "title_start": "Encuentra tu",
+    "title_highlight": "santuario",
+    "search_placeholder": "Busca por ciudad, barrio o dirección...",
+    "search_button": "Buscar",
+    "filter_all": "Todos",
+    "filter_house": "Casa",
+    "filter_apartment": "Apartamento",
+    "filter_villa": "Villa",
+    "filter_penthouse": "Penthouse",
+    "filters": "Filtros"
+  }
+}
