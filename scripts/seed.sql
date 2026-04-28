@@ -1,0 +1,23 @@
+INSERT INTO properties (
+  title, location, price, raw_price, beds, baths, sqm, type, category, is_featured, lat, lng, property_type, amenities, slug
+) VALUES 
+('Modern Glass Villa with Ocean Views', 'Malibu, CA', '$4,200,000', 4200000, 5, 4.5, 450, 'sale', 'new_in_market', true, 34.0259, -118.7798, 'Villa', ARRAY['Swimming Pool', 'Gym', 'Parking'], 'modern-glass-villa-with-ocean-views'),
+('Penthouse Overlooking Central Park', 'New York, NY', '$8,500,000', 8500000, 3, 3.5, 320, 'sale', 'featured', true, 40.7812, -73.9665, 'Penthouse', ARRAY['Gym', 'Air Conditioning', 'High-speed Wifi'], 'penthouse-overlooking-central-park'),
+('Architectural Masterpiece in the Hills', 'Hollywood Hills, CA', '$3,750,000', 3750000, 4, 4, 380, 'sale', 'new_in_market', false, 34.1102, -118.3533, 'House', ARRAY['Swimming Pool', 'Parking', 'Patio / Terrace'], 'architectural-masterpiece-in-the-hills'),
+('Luxury Condo with Skyline Views', 'Miami, FL', '$1,850,000', 1850000, 2, 2.5, 190, 'sale', 'new_in_market', true, 25.7617, -80.1918, 'Condo', ARRAY['Gym', 'Swimming Pool', 'Air Conditioning'], 'luxury-condo-with-skyline-views'),
+('Lakefront Smart Home', 'Austin, TX', '$2,300,000', 2300000, 4, 3, 310, 'sale', 'new_in_market', false, 30.2672, -97.7431, 'House', ARRAY['High-speed Wifi', 'Air Conditioning', 'Parking'], 'lakefront-smart-home'),
+('Historic Townhouse Remodel', 'Boston, MA', '$1,950,000', 1950000, 3, 2.5, 210, 'sale', 'featured', true, 42.3601, -71.0589, 'Townhouse', ARRAY['Parking', 'Patio / Terrace', 'Air Conditioning'], 'historic-townhouse-remodel'),
+('Chic Loft in Downtown', 'Chicago, IL', '$1,100,000', 1100000, 2, 2, 160, 'sale', 'new_in_market', false, 41.8781, -87.6298, 'Apartment', ARRAY['Gym', 'High-speed Wifi'], 'chic-loft-in-downtown'),
+('Desert Oasis Estate', 'Scottsdale, AZ', '$2,900,000', 2900000, 5, 4.5, 420, 'sale', 'featured', true, 33.4942, -111.9261, 'House', ARRAY['Swimming Pool', 'Parking', 'Patio / Terrace', 'Air Conditioning'], 'desert-oasis-estate'),
+('Oceanfront Condo with Wrap-around Balcony', 'San Diego, CA', '$2,100,000', 2100000, 3, 2, 180, 'sale', 'new_in_market', false, 32.7157, -117.1611, 'Condo', ARRAY['Swimming Pool', 'Gym', 'Patio / Terrace'], 'oceanfront-condo-with-wrap-around-balcony'),
+('Mountain Retreat Chalet', 'Aspen, CO', '$5,400,000', 5400000, 4, 4.5, 360, 'sale', 'featured', true, 39.1911, -106.8175, 'Villa', ARRAY['Parking', 'Patio / Terrace', 'Gym'], 'mountain-retreat-chalet'),
+('Elegant Georgian Manor', 'Atlanta, GA', '$3,100,000', 3100000, 6, 5.5, 550, 'sale', 'new_in_market', false, 33.7490, -84.3880, 'House', ARRAY['Swimming Pool', 'Parking', 'Gym', 'Air Conditioning'], 'elegant-georgian-manor'),
+('Modernist Home in the Woods', 'Portland, OR', '$1,650,000', 1650000, 3, 3, 240, 'sale', 'new_in_market', false, 45.5152, -122.6784, 'House', ARRAY['Patio / Terrace', 'Parking', 'High-speed Wifi'], 'modernist-home-in-the-woods'),
+('Beachfront Villa with Infinity Pool', 'Honolulu, HI', '$7,200,000', 7200000, 5, 5, 480, 'sale', 'featured', true, 21.3069, -157.8583, 'Villa', ARRAY['Swimming Pool', 'Air Conditioning', 'Gym', 'Patio / Terrace'], 'beachfront-villa-with-infinity-pool'),
+('Contemporary Apartment', 'Seattle, WA', '$950,000', 950000, 2, 1.5, 130, 'sale', 'new_in_market', false, 47.6062, -122.3321, 'Apartment', ARRAY['High-speed Wifi', 'Gym', 'Parking'], 'contemporary-apartment'),
+('Luxury Estate with Vineyard', 'Napa Valley, CA', '$6,800,000', 6800000, 6, 6.5, 600, 'sale', 'featured', true, 38.2975, -122.2869, 'House', ARRAY['Swimming Pool', 'Patio / Terrace', 'Parking', 'Gym'], 'luxury-estate-with-vineyard'),
+('High-Rise Studio with View', 'San Francisco, CA', '$750,000', 750000, 1, 1, 80, 'sale', 'new_in_market', false, 37.7749, -122.4194, 'Apartment', ARRAY['Gym', 'High-speed Wifi', 'Air Conditioning'], 'high-rise-studio-with-view'),
+('Spacious Suburb Family Home', 'Dallas, TX', '$1,200,000', 1200000, 5, 4, 350, 'sale', 'new_in_market', false, 32.7767, -96.7970, 'House', ARRAY['Parking', 'Air Conditioning', 'Swimming Pool'], 'spacious-suburb-family-home'),
+('Corner Townhouse with Garden', 'Washington, DC', '$1,450,000', 1450000, 3, 3.5, 220, 'sale', 'new_in_market', false, 38.9072, -77.0369, 'Townhouse', ARRAY['Patio / Terrace', 'Parking', 'Air Conditioning'], 'corner-townhouse-with-garden'),
+('Downtown Posh Condominium', 'Denver, CO', '$1,350,000', 1350000, 2, 2, 170, 'sale', 'new_in_market', false, 39.7392, -104.9903, 'Condo', ARRAY['Gym', 'Parking', 'High-speed Wifi'], 'downtown-posh-condominium'),
+('Luxury Duplex with Terrace', 'Philadelphia, PA', '$1,550,000', 1550000, 4, 3, 260, 'sale', 'new_in_market', true, 39.9526, -75.1652, 'Apartment', ARRAY['Patio / Terrace', 'Air Conditioning', 'Gym'], 'luxury-duplex-with-terrace');
