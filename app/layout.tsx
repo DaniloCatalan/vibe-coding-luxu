@@ -3,6 +3,7 @@ import Navbar from "@/components/layout/Navbar";
 import "./globals.css";
 import { getLocale, getDictionary } from "@/lib/i18n/server";
 import { TranslationProvider } from "@/lib/i18n/TranslationContext";
+import { AuthProvider } from "@/lib/auth/AuthContext";
 
 export const metadata: Metadata = {
   title: "Luxe Estate - Premium Real Estate",
@@ -28,10 +29,12 @@ export default async function RootLayout({
         className="min-h-full flex flex-col bg-background-light text-nordic-dark selection:bg-mosque selection:text-white"
         suppressHydrationWarning
       >
-        <TranslationProvider dictionary={dictionary} locale={locale}>
-          <Navbar />
-          {children}
-        </TranslationProvider>
+        <AuthProvider>
+          <TranslationProvider dictionary={dictionary} locale={locale}>
+            <Navbar />
+            {children}
+          </TranslationProvider>
+        </AuthProvider>
       </body>
     </html>
   );

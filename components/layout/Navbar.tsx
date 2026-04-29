@@ -4,9 +4,16 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "@/lib/i18n/TranslationContext";
 import LanguageSelector from "@/components/i18n/LanguageSelector";
+import { useAuth } from "@/lib/auth/AuthContext";
+import { supabase } from "@/lib/supabase";
 
 export default function Navbar() {
   const { t } = useTranslation();
+  const { user, isLoading } = useAuth();
+
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
+  };
 
   return (
     <nav className="sticky top-0 z-50 bg-background-light/95 backdrop-blur-md border-b border-nordic-dark/10">
@@ -37,14 +44,30 @@ export default function Navbar() {
             
             <div className="flex items-center gap-3 pl-2 sm:pl-4 border-l border-nordic-dark/10 ml-2">
               <LanguageSelector />
-              <button className="w-9 h-9 rounded-full bg-gray-200 overflow-hidden ring-2 ring-transparent hover:ring-mosque transition-all relative">
-                <Image 
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuCAWhQZ663Bd08kmzjbOPmUk4UIxYooNONShMEFXLR-DtmVi6Oz-TiaY77SPwFk7g0OobkeZEOMvt6v29mSOD0Xm2g95WbBG3ZjWXmiABOUwGU0LOySRfVDo-JTXQ0-gtwjWxbmue0qDm91m-zEOEZwAW6iRFB1qC1bAU-wkjxm67Sbztq8w7srHkFT9bVEC86qG-FzhOBTomhAurNRmx9l8Yfqabk328NfdKuVLckgCdaPsNFE3yN65MeoRi05GA_gXIMwG4YDIeA" 
-                  alt="Profile" 
-                  fill
-                  className="object-cover"
-                />
-              </button>
+              
+              {!isLoading && (
+                user ? (
+                  <button 
+                    onClick={handleLogout}
+                    title="Log out"
+                    className="w-9 h-9 rounded-full bg-gray-200 overflow-hidden ring-2 ring-transparent hover:ring-mosque transition-all relative flex-shrink-0"
+                  >
+                    <Image 
+                      src={user.user_metadata.avatar_url || "https://lh3.googleusercontent.com/aida-public/AB6AXuCAWhQZ663Bd08kmzjbOPmUk4UIxYooNONShMEFXLR-DtmVi6Oz-TiaY77SPwFk7g0OobkeZEOMvt6v29mSOD0Xm2g95WbBG3ZjWXmiABOUwGU0LOySRfVDo-JTXQ0-gtwjWxbmue0qDm91m-zEOEZwAW6iRFB1qC1bAU-wkjxm67Sbztq8w7srHkFT9bVEC86qG-FzhOBTomhAurNRmx9l8Yfqabk328NfdKuVLckgCdaPsNFE3yN65MeoRi05GA_gXIMwG4YDIeA"} 
+                      alt="Profile" 
+                      fill
+                      className="object-cover"
+                    />
+                  </button>
+                ) : (
+                  <Link 
+                    href="/login" 
+                    className="ml-2 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-mosque rounded-lg hover:bg-mosque/90 transition-colors shadow-soft"
+                  >
+                    Log In
+                  </Link>
+                )
+              )}
             </div>
           </div>
         </div>
