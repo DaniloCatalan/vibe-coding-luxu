@@ -6,7 +6,7 @@ import { Property } from "@/lib/properties";
 import { useTranslation } from "@/lib/i18n/TranslationContext";
 
 export function FeaturedPropertyCard({ property }: { property: Property }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <Link href={`/properties/${property.slug}`} className="block group relative rounded-xl overflow-hidden shadow-soft bg-white cursor-pointer hover:shadow-card transition-all duration-300">
@@ -50,7 +50,7 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
             <span className="material-icons text-lg">bathtub</span> {property.baths} {t('property_card.baths')}
           </div>
           <div className="flex items-center gap-2 text-nordic-muted text-sm">
-            <span className="material-icons text-lg">square_foot</span> {property.sqm.toLocaleString()} m²
+            <span className="material-icons text-lg">square_foot</span> {property.sqm.toLocaleString(locale)} m²
           </div>
         </div>
       </div>
@@ -59,7 +59,7 @@ export function FeaturedPropertyCard({ property }: { property: Property }) {
 }
 
 export function StandardPropertyCard({ property, hiddenClass = "" }: { property: Property; hiddenClass?: string }) {
-  const { t } = useTranslation();
+  const { t, locale } = useTranslation();
 
   return (
     <Link
@@ -108,7 +108,7 @@ export function StandardPropertyCard({ property, hiddenClass = "" }: { property:
             <span className="material-icons text-sm text-mosque/80">bathtub</span> {property.baths}
           </div>
           <div className="flex items-center gap-1 text-nordic-muted text-xs">
-            <span className="material-icons text-sm text-mosque/80">square_foot</span> {property.sqm.toLocaleString()}m²
+            <span className="material-icons text-sm text-mosque/80">square_foot</span> {property.sqm.toLocaleString(locale)}m²
           </div>
         </div>
       </div>
