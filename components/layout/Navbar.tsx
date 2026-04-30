@@ -47,24 +47,30 @@ export default function Navbar() {
               
               {!isLoading && (
                 user ? (
-                  <button 
-                    onClick={handleLogout}
-                    title="Log out"
-                    className="w-9 h-9 rounded-full bg-gray-200 overflow-hidden ring-2 ring-transparent hover:ring-mosque transition-all relative flex-shrink-0"
-                  >
-                    <Image 
-                      src={user.user_metadata.avatar_url || "https://lh3.googleusercontent.com/aida-public/AB6AXuCAWhQZ663Bd08kmzjbOPmUk4UIxYooNONShMEFXLR-DtmVi6Oz-TiaY77SPwFk7g0OobkeZEOMvt6v29mSOD0Xm2g95WbBG3ZjWXmiABOUwGU0LOySRfVDo-JTXQ0-gtwjWxbmue0qDm91m-zEOEZwAW6iRFB1qC1bAU-wkjxm67Sbztq8w7srHkFT9bVEC86qG-FzhOBTomhAurNRmx9l8Yfqabk328NfdKuVLckgCdaPsNFE3yN65MeoRi05GA_gXIMwG4YDIeA"} 
-                      alt="Profile" 
-                      fill
-                      className="object-cover"
-                    />
-                  </button>
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded-full bg-gray-200 overflow-hidden ring-2 ring-transparent relative flex-shrink-0">
+                      <Image 
+                        src={user.user_metadata.avatar_url || "https://lh3.googleusercontent.com/aida-public/AB6AXuCAWhQZ663Bd08kmzjbOPmUk4UIxYooNONShMEFXLR-DtmVi6Oz-TiaY77SPwFk7g0OobkeZEOMvt6v29mSOD0Xm2g95WbBG3ZjWXmiABOUwGU0LOySRfVDo-JTXQ0-gtwjWxbmue0qDm91m-zEOEZwAW6iRFB1qC1bAU-wkjxm67Sbztq8w7srHkFT9bVEC86qG-FzhOBTomhAurNRmx9l8Yfqabk328NfdKuVLckgCdaPsNFE3yN65MeoRi05GA_gXIMwG4YDIeA"} 
+                        alt="Profile" 
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <button 
+                      onClick={handleLogout}
+                      className="text-sm font-medium text-nordic-dark/70 hover:text-mosque transition-colors flex items-center gap-1"
+                      title={t('nav.logout')}
+                    >
+                      <span className="material-icons text-[18px]">logout</span>
+                      <span className="hidden sm:inline">{t('nav.logout')}</span>
+                    </button>
+                  </div>
                 ) : (
                   <Link 
                     href="/login" 
                     className="ml-2 inline-flex items-center justify-center px-4 py-2 text-sm font-medium text-white bg-mosque rounded-lg hover:bg-mosque/90 transition-colors shadow-soft"
                   >
-                    Log In
+                    {t('nav.login')}
                   </Link>
                 )
               )}
