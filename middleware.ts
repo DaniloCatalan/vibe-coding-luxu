@@ -18,9 +18,23 @@ export async function middleware(request: NextRequest) {
           cookiesToSet.forEach(({ name, value }) =>
             request.cookies.set(name, value)
           );
+          
+          // Forward the updated cookies to Server Components by updating the request headers
+          const requestHeaders = new Headers(request.headers);
+          
+          // Update the cookie header manually
+          const cookieHeader = request.cookies.getAll()
+            .map(c => `${c.name}=${c.value}`)
+            .join('; ');
+            
+          requestHeaders.set('cookie', cookieHeader);
+          
           supabaseResponse = NextResponse.next({
-            request,
+            request: {
+              headers: requestHeaders,
+            },
           });
+          
           cookiesToSet.forEach(({ name, value, options }) =>
             supabaseResponse.cookies.set(name, value, options)
           );

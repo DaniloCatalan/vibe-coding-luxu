@@ -12,15 +12,46 @@ export default async function UsersTab() {
         getAll() {
           return cookieStore.getAll();
         },
+        setAll(cookiesToSet) {
+          try {
+            cookiesToSet.forEach(({ name, value, options }) =>
+              cookieStore.set(name, value, options)
+            );
+          } catch {
+            // The `setAll` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing user sessions.
+          }
+        },
       },
     }
   );
 
+  const { data: authData, error: authError } = await supabase.auth.getUser();
+  const allCookies = cookieStore.getAll().map(c => c.name);
+  console.log("Cookies in UsersTab:", allCookies);
+  console.log("Auth inside UsersTab:", authData?.user?.id, authError?.message);
+
   const { data: users, error } = await supabase.rpc("get_all_users");
 
   if (error) {
-    console.error("Error fetching users:", error);
-    return <div className="p-4 text-red-500">Error loading users. Make sure the database script was executed and you are logged in as an admin.</div>;
+    const errorDetails = {
+      message: error.message,
+      code: error.code,
+      details: error.details,
+      hint: error.hint,
+      user_id: authData?.user?.id || 'null',
+      cookies_found: allCookies.join(', ') || 'none'
+    };
+    console.error("Error fetching users. Full details:", JSON.stringify(errorDetails, null, 2));
+    return (
+      <div className="p-4 text-red-500 bg-red-50 dark:bg-red-900/10 rounded-lg border border-red-200 dark:border-red-800/30">
+        <h3 className="font-bold mb-2">Error loading users</h3>
+        <pre className="text-xs whitespace-pre-wrap font-mono">
+          {JSON.stringify(errorDetails, null, 2)}
+        </pre>
+        <p className="mt-4 text-sm">Make sure the database script was executed and you are logged in as an admin.</p>
+      </div>
+    );
   }
 
   return (

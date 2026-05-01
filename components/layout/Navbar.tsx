@@ -7,12 +7,21 @@ import LanguageSelector from "@/components/i18n/LanguageSelector";
 import { useAuth } from "@/lib/auth/AuthContext";
 import { supabase } from "@/lib/supabase";
 
+import { usePathname, useRouter } from "next/navigation";
+
 export default function Navbar() {
   const { t } = useTranslation();
   const { user, isLoading } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const handleLogout = async () => {
     await supabase.auth.signOut();
+    if (pathname.startsWith('/admin')) {
+      router.push('/');
+    } else {
+      router.refresh();
+    }
   };
 
   return (
