@@ -10,6 +10,9 @@ export default async function AdminDashboard({
   const resolvedParams = await searchParams;
   const tab = resolvedParams.tab === 'users' ? 'users' : 'properties';
 
+  const pageStr = Array.isArray(resolvedParams.page) ? resolvedParams.page[0] : resolvedParams.page;
+  const page = parseInt(pageStr || '1', 10) || 1;
+
   return (
     <main className="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
@@ -37,7 +40,7 @@ export default async function AdminDashboard({
         </div>
       </div>
 
-      {tab === "properties" ? <PropertiesTab /> : <UsersTab />}
+      {tab === "properties" ? <PropertiesTab page={page} /> : <UsersTab />}
     </main>
   );
 }

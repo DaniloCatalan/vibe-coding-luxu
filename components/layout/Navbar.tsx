@@ -11,7 +11,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 export default function Navbar() {
   const { t } = useTranslation();
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, isAdmin } = useAuth();
   const router = useRouter();
   const pathname = usePathname();
 
@@ -23,6 +23,13 @@ export default function Navbar() {
       router.refresh();
     }
   };
+
+  const navLinks = [
+    { href: "/buy", label: t('nav.buy') },
+    { href: "/rent", label: t('nav.rent') },
+    { href: "/sell", label: t('nav.sell') },
+    { href: "/saved", label: t('nav.saved') },
+  ];
 
   return (
     <nav className="sticky top-0 z-50 bg-background-light/95 backdrop-blur-md border-b border-nordic-dark/10">
@@ -36,10 +43,36 @@ export default function Navbar() {
           </Link>
 
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="#" className="text-mosque font-medium text-sm border-b-2 border-mosque px-1 py-1">{t('nav.buy')}</Link>
-            <Link href="#" className="text-nordic-dark/70 hover:text-nordic-dark font-medium text-sm hover:border-b-2 hover:border-nordic-dark/20 px-1 py-1 transition-all">{t('nav.rent')}</Link>
-            <Link href="#" className="text-nordic-dark/70 hover:text-nordic-dark font-medium text-sm hover:border-b-2 hover:border-nordic-dark/20 px-1 py-1 transition-all">{t('nav.sell')}</Link>
-            <Link href="#" className="text-nordic-dark/70 hover:text-nordic-dark font-medium text-sm hover:border-b-2 hover:border-nordic-dark/20 px-1 py-1 transition-all">{t('nav.saved')}</Link>
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href));
+              return (
+                <Link 
+                  key={link.href} 
+                  href={link.href} 
+                  className={`font-medium text-sm px-1 py-1 transition-all ${
+                    isActive 
+                      ? 'text-mosque border-b-2 border-mosque' 
+                      : 'text-nordic-dark/70 hover:text-nordic-dark hover:border-b-2 hover:border-nordic-dark/20'
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+            
+            {isAdmin && (
+              <Link 
+                href="/admin/dashboard" 
+                className={`font-medium text-sm px-1 py-1 transition-all flex items-center gap-1 ${
+                  pathname.startsWith('/admin') 
+                    ? 'text-primary border-b-2 border-primary' 
+                    : 'text-nordic-dark/70 hover:text-primary hover:border-b-2 hover:border-primary/20'
+                }`}
+              >
+                <span className="material-icons text-[16px]">admin_panel_settings</span>
+                Admin
+              </Link>
+            )}
           </div>
 
           <div className="flex items-center space-x-4 sm:space-x-6">

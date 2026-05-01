@@ -1,17 +1,25 @@
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
 
-export default async function PropertiesTab() {
-  const { data: properties, error } = await supabase
+import Link from "next/link";
+
+export default async function PropertiesTab({ page = 1 }: { page?: number }) {
+  const ITEMS_PER_PAGE = 10;
+  const from = (page - 1) * ITEMS_PER_PAGE;
+  const to = from + ITEMS_PER_PAGE - 1;
+
+  const { data: properties, count, error } = await supabase
     .from("properties")
-    .select("*")
+    .select("*", { count: 'exact' })
     .order("created_at", { ascending: false })
-    .limit(20);
+    .range(from, to);
 
   if (error) {
     console.error("Error fetching properties:", error);
     return <div className="p-4 text-red-500">Error loading properties</div>;
   }
+
+  const totalPages = Math.ceil((count || 0) / ITEMS_PER_PAGE);
 
   return (
     <>
@@ -111,11 +119,30 @@ export default async function PropertiesTab() {
         {/* Pagination */}
         <div className="px-6 py-4 flex items-center justify-between bg-gray-50/50 dark:bg-primary/5">
           <div className="text-sm text-gray-500 dark:text-gray-400">
-            Showing <span className="font-medium text-nordic dark:text-white">1</span> to <span className="font-medium text-nordic dark:text-white">{properties?.length || 0}</span> results
+            Showing <span className="font-medium text-nordic dark:text-white">{count === 0 ? 0 : from + 1}</span> to <span className="font-medium text-nordic dark:text-white">{Math.min(to + 1, count || 0)}</span> of <span className="font-medium text-nordic dark:text-white">{count || 0}</span> results
           </div>
           <div className="flex gap-2">
-            <button className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary/20 disabled:opacity-50">Previous</button>
-            <button className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary/20">Next</button>
+            {page > 1 ? (
+              <Link 
+                href={`/admin/dashboard?tab=properties&page=${page - 1}`}
+                className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary/20"
+              >
+                Previous
+              </Link>
+            ) : (
+              <button disabled className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-400 dark:text-gray-600 opacity-50 cursor-not-allowed">Previous</button>
+            )}
+            
+            {page < totalPages ? (
+              <Link 
+                href={`/admin/dashboard?tab=properties&page=${page + 1}`}
+                className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-primary/20"
+              >
+                Next
+              </Link>
+            ) : (
+              <button disabled className="px-3 py-1 text-sm border border-gray-200 dark:border-primary/30 rounded-md text-gray-400 dark:text-gray-600 opacity-50 cursor-not-allowed">Next</button>
+            )}
           </div>
         </div>
       </div>
