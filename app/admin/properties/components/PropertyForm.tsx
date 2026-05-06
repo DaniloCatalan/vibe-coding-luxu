@@ -35,6 +35,8 @@ interface PropertyData {
   parking?: number;
   amenities?: string[];
   images?: string[];
+  lat?: number;
+  lng?: number;
 }
 
 export default function PropertyForm({ property }: { property?: PropertyData }) {
@@ -55,6 +57,8 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
   const [beds, setBeds] = useState(property?.beds ?? 1);
   const [baths, setBaths] = useState(property?.baths ?? 1);
   const [parking, setParking] = useState(property?.parking ?? 0);
+  const [lat, setLat] = useState(property?.lat ?? 0);
+  const [lng, setLng] = useState(property?.lng ?? 0);
   const [amenities, setAmenities] = useState<string[]>(property?.amenities ?? []);
   const [images, setImages] = useState<string[]>(property?.images ?? []);
   const [uploading, setUploading] = useState(false);
@@ -102,6 +106,8 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
     fd.append("beds", String(beds));
     fd.append("baths", String(baths));
     fd.append("parking", String(parking));
+    if (lat) fd.append("lat", String(lat));
+    if (lng) fd.append("lng", String(lng));
     amenities.forEach((a) => fd.append("amenities", a));
     images.forEach((img) => fd.append("images", img));
 
@@ -388,6 +394,37 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
                     placeholder="Street Address, City, Zip"
                     className="w-full px-4 py-2.5 rounded-md border border-gray-200 bg-white text-nordic placeholder-gray-400 focus:ring-1 focus:ring-mosque focus:border-mosque transition-all text-sm font-sf-pro outline-none"
                   />
+                </div>
+                
+                <div className="grid grid-cols-2 gap-4 mt-4">
+                  <div>
+                    <label className="block text-sm font-medium text-nordic mb-1.5 font-sf-pro" htmlFor="lat">
+                      Latitude
+                    </label>
+                    <input
+                      id="lat"
+                      type="number"
+                      step="any"
+                      value={lat || ""}
+                      onChange={(e) => setLat(Number(e.target.value))}
+                      placeholder="e.g. 40.7128"
+                      className="w-full px-4 py-2.5 rounded-md border border-gray-200 bg-white text-nordic placeholder-gray-400 focus:ring-1 focus:ring-mosque focus:border-mosque transition-all text-sm font-sf-pro outline-none"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-nordic mb-1.5 font-sf-pro" htmlFor="lng">
+                      Longitude
+                    </label>
+                    <input
+                      id="lng"
+                      type="number"
+                      step="any"
+                      value={lng || ""}
+                      onChange={(e) => setLng(Number(e.target.value))}
+                      placeholder="e.g. -74.0060"
+                      className="w-full px-4 py-2.5 rounded-md border border-gray-200 bg-white text-nordic placeholder-gray-400 focus:ring-1 focus:ring-mosque focus:border-mosque transition-all text-sm font-sf-pro outline-none"
+                    />
+                  </div>
                 </div>
               </div>
             </div>

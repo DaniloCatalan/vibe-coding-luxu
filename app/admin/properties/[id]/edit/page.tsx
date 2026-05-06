@@ -60,6 +60,8 @@ export default async function EditPropertyPage({
     parking: Number(property.parking ?? 0),
     amenities: property.amenities ?? [],
     images: property.images ?? [],
+    lat: property.lat ? Number(property.lat) : undefined,
+    lng: property.lng ? Number(property.lng) : undefined,
   };
 
   return <PropertyForm property={formData} />;

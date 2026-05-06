@@ -60,6 +60,10 @@ export async function createProperty(formData: FormData) {
   const beds = Number(formData.get("beds") || 0);
   const baths = Number(formData.get("baths") || 0);
   const parking = Number(formData.get("parking") || 0);
+  const latStr = formData.get("lat") as string;
+  const lngStr = formData.get("lng") as string;
+  const lat = latStr ? Number(latStr) : null;
+  const lng = lngStr ? Number(lngStr) : null;
   const amenities = formData.getAll("amenities") as string[];
   const images = formData.getAll("images") as string[];
 
@@ -92,6 +96,8 @@ export async function createProperty(formData: FormData) {
     beds,
     baths,
     parking,
+    lat,
+    lng,
     amenities,
     images,
     slug,
@@ -123,6 +129,10 @@ export async function updateProperty(id: string, formData: FormData) {
   const beds = Number(formData.get("beds") || 0);
   const baths = Number(formData.get("baths") || 0);
   const parking = Number(formData.get("parking") || 0);
+  const latStr = formData.get("lat") as string;
+  const lngStr = formData.get("lng") as string;
+  const lat = latStr ? Number(latStr) : null;
+  const lng = lngStr ? Number(lngStr) : null;
   const amenities = formData.getAll("amenities") as string[];
   const images = formData.getAll("images") as string[];
 
@@ -155,6 +165,8 @@ export async function updateProperty(id: string, formData: FormData) {
       beds,
       baths,
       parking,
+      lat,
+      lng,
       amenities,
       images,
       category: isFeatured ? "featured" : "new_in_market",
