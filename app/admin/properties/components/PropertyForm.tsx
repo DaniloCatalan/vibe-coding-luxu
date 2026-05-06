@@ -4,6 +4,7 @@ import { useState, useRef, useTransition } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { createProperty, updateProperty, uploadPropertyImage } from "../actions";
+import PropertyMapClient from "@/components/properties/PropertyMapClient";
 
 const AMENITIES_LIST = [
   "Swimming Pool",
@@ -426,6 +427,12 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
                     />
                   </div>
                 </div>
+
+                {lat !== 0 && lng !== 0 && (
+                  <div className="h-[300px] mt-6 rounded-xl overflow-hidden border border-gray-200 shadow-sm relative z-0">
+                    <PropertyMapClient lat={lat} lng={lng} title={title} />
+                  </div>
+                )}
               </div>
             </div>
 
