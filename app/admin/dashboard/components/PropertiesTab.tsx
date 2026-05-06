@@ -1,7 +1,7 @@
 import { supabase } from "@/lib/supabase";
 import Image from "next/image";
-
 import Link from "next/link";
+import DeletePropertyButton from "./DeletePropertyButton";
 
 export default async function PropertiesTab({ page = 1 }: { page?: number }) {
   const ITEMS_PER_PAGE = 10;
@@ -52,6 +52,17 @@ export default async function PropertiesTab({ page = 1 }: { page?: number }) {
             <span className="material-icons">pending</span>
           </div>
         </div>
+      </div>
+
+      {/* Add Property Button */}
+      <div className="flex justify-end mb-4">
+        <Link
+          href="/admin/properties/new"
+          className="px-5 py-2.5 rounded-lg bg-mosque hover:bg-nordic text-white font-medium shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 text-sm"
+        >
+          <span className="material-icons text-sm">add</span>
+          Add Property
+        </Link>
       </div>
 
       {/* Property List Container */}
@@ -106,12 +117,14 @@ export default async function PropertiesTab({ page = 1 }: { page?: number }) {
             
             {/* Actions */}
             <div className="col-span-12 md:col-span-2 flex items-center justify-end gap-2">
-              <button className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-hint-green/30 transition-all tooltip-trigger" title="Edit Property">
+              <Link
+                href={`/admin/properties/${property.id}/edit`}
+                className="p-2 rounded-lg text-gray-400 hover:text-primary hover:bg-hint-green/30 transition-all"
+                title="Edit Property"
+              >
                 <span className="material-icons text-xl">edit</span>
-              </button>
-              <button className="p-2 rounded-lg text-gray-400 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-900/20 transition-all tooltip-trigger" title="Delete Property">
-                <span className="material-icons text-xl">delete_outline</span>
-              </button>
+              </Link>
+              <DeletePropertyButton propertyId={property.id} />
             </div>
           </div>
         ))}
