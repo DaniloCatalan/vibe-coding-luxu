@@ -132,7 +132,8 @@ export async function searchProperties(filters: SearchFilters): Promise<Property
   let query = supabase.from("properties").select("*").eq("is_active", true);
 
   if (filters.location) {
-    query = query.ilike("location", `%${filters.location}%`);
+    const searchTerm = filters.location.replace(/"/g, '');
+    query = query.or(`location.ilike."%${searchTerm}%",title.ilike."%${searchTerm}%"`);
   }
   if (filters.minPrice !== undefined) {
     query = query.gte("raw_price", filters.minPrice);
