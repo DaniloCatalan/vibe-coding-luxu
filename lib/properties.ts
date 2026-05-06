@@ -20,6 +20,7 @@ export interface Property {
   lng?: number;
   property_type?: string;
   amenities?: string[];
+  is_active?: boolean;
 }
 
 // Map snake_case DB rows → camelCase Property
@@ -45,6 +46,7 @@ function mapRow(row: any): Property {
     lng: row.lng ? Number(row.lng) : undefined,
     property_type: row.property_type ?? undefined,
     amenities: row.amenities ?? [],
+    is_active: row.is_active ?? true,
   };
 }
 
@@ -63,6 +65,7 @@ export async function getNewInMarketProperties(page: number = 1): Promise<{
     .from("properties")
     .select("*", { count: "exact" })
     .eq("category", "new_in_market")
+    .eq("is_active", true)
     .order("created_at", { ascending: true })
     .range(from, to);
 
@@ -87,6 +90,7 @@ export async function getFeaturedProperties(): Promise<Property[]> {
     .from("properties")
     .select("*")
     .eq("is_featured", true)
+    .eq("is_active", true)
     .order("created_at", { ascending: true })
     .limit(2);
 
@@ -103,6 +107,7 @@ export async function getPropertyBySlug(slug: string): Promise<Property | null> 
     .from("properties")
     .select("*")
     .eq("slug", slug)
+    .eq("is_active", true)
     .single();
 
   if (error || !data) {
@@ -124,7 +129,7 @@ export interface SearchFilters {
 }
 
 export async function searchProperties(filters: SearchFilters): Promise<Property[]> {
-  let query = supabase.from("properties").select("*");
+  let query = supabase.from("properties").select("*").eq("is_active", true);
 
   if (filters.location) {
     query = query.ilike("location", `%${filters.location}%`);

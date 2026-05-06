@@ -37,7 +37,7 @@ export default async function PropertiesTab({ page = 1 }: { page?: number }) {
         <div className="bg-white dark:bg-[#152e2a] p-5 rounded-xl border border-primary/10 shadow-sm flex items-center justify-between">
           <div>
             <p className="text-sm font-medium text-gray-500 dark:text-gray-400">Active Properties</p>
-            <p className="text-2xl font-bold text-nordic dark:text-white mt-1">{properties?.length || 0}</p>
+            <p className="text-2xl font-bold text-nordic dark:text-white mt-1">{properties?.filter(p => p.is_active !== false).length || 0}</p>
           </div>
           <div className="h-10 w-10 rounded-full bg-hint-green flex items-center justify-center text-primary">
             <span className="material-icons">check_circle</span>
@@ -109,9 +109,9 @@ export default async function PropertiesTab({ page = 1 }: { page?: number }) {
             
             {/* Status */}
             <div className="col-span-6 md:col-span-2">
-              <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium bg-hint-green text-primary border border-primary/10">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary mr-1.5"></span>
-                Active
+              <span className={`inline-flex items-center px-2.5 py-1 rounded-full text-xs font-medium border ${property.is_active !== false ? "bg-hint-green text-primary border-primary/10" : "bg-red-50 text-red-600 border-red-100 dark:bg-red-900/20 dark:text-red-400 dark:border-red-900/30"}`}>
+                <span className={`w-1.5 h-1.5 rounded-full mr-1.5 ${property.is_active !== false ? "bg-primary" : "bg-red-500"}`}></span>
+                {property.is_active !== false ? "Active" : "Inactive"}
               </span>
             </div>
             
@@ -124,7 +124,7 @@ export default async function PropertiesTab({ page = 1 }: { page?: number }) {
               >
                 <span className="material-icons text-xl">edit</span>
               </Link>
-              <DeletePropertyButton propertyId={property.id} />
+              <DeletePropertyButton propertyId={property.id} isActive={property.is_active !== false} />
             </div>
           </div>
         ))}

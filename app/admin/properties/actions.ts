@@ -66,6 +66,7 @@ export async function createProperty(formData: FormData) {
   const lng = lngStr ? Number(lngStr) : null;
   const amenities = formData.getAll("amenities") as string[];
   const images = formData.getAll("images") as string[];
+  const isActive = formData.get("is_active") !== "false";
 
   const type = status === "for-rent" ? "rent" : "sale";
   const badge =
@@ -102,6 +103,7 @@ export async function createProperty(formData: FormData) {
     images,
     slug,
     category: isFeatured ? "featured" : "new_in_market",
+    is_active: isActive,
   });
 
   if (error) {
@@ -135,6 +137,7 @@ export async function updateProperty(id: string, formData: FormData) {
   const lng = lngStr ? Number(lngStr) : null;
   const amenities = formData.getAll("amenities") as string[];
   const images = formData.getAll("images") as string[];
+  const isActive = formData.get("is_active") !== "false";
 
   const type = status === "for-rent" ? "rent" : "sale";
   const badge =
@@ -170,6 +173,7 @@ export async function updateProperty(id: string, formData: FormData) {
       amenities,
       images,
       category: isFeatured ? "featured" : "new_in_market",
+      is_active: isActive,
     })
     .eq("id", id);
 
@@ -183,13 +187,13 @@ export async function updateProperty(id: string, formData: FormData) {
   redirect("/admin/dashboard?tab=properties");
 }
 
-export async function deleteProperty(id: string) {
+export async function togglePropertyStatus(id: string, activate: boolean) {
   const supabase = createSupabaseClient();
 
-  const { error } = await supabase.from("properties").delete().eq("id", id);
+  const { error } = await supabase.from("properties").update({ is_active: activate }).eq("id", id);
 
   if (error) {
-    console.error("Error deleting property:", error);
+    console.error(`Error ${activate ? "activating" : "deactivating"} property:`, error);
     return { success: false, error: error.message };
   }
 

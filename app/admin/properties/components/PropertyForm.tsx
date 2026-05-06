@@ -38,6 +38,7 @@ interface PropertyData {
   images?: string[];
   lat?: number;
   lng?: number;
+  is_active?: boolean;
 }
 
 export default function PropertyForm({ property }: { property?: PropertyData }) {
@@ -51,6 +52,7 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
   const [status, setStatus] = useState(property?.status ?? "for-sale");
   const [propertyType, setPropertyType] = useState(property?.property_type ?? "apartment");
   const [isFeatured, setIsFeatured] = useState(property?.is_featured ?? false);
+  const [isActive, setIsActive] = useState(property?.is_active ?? true);
   const [description, setDescription] = useState(property?.description ?? "");
   const [location, setLocation] = useState(property?.location ?? "");
   const [sqm, setSqm] = useState(property?.sqm ?? 0);
@@ -100,6 +102,7 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
     fd.append("status", status);
     fd.append("property_type", propertyType);
     fd.append("is_featured", String(isFeatured));
+    fd.append("is_active", String(isActive));
     fd.append("description", description);
     fd.append("location", location);
     fd.append("sqm", String(sqm));
@@ -264,17 +267,33 @@ export default function PropertyForm({ property }: { property?: PropertyData }) 
                 </div>
 
                 {/* Featured toggle */}
-                <div className="flex items-center gap-3">
-                  <button
-                    type="button"
-                    onClick={() => setIsFeatured((v) => !v)}
-                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isFeatured ? "bg-mosque" : "bg-gray-200"}`}
-                  >
-                    <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform ${isFeatured ? "translate-x-6" : "translate-x-1"}`} />
-                  </button>
-                  <label className="text-sm font-medium text-nordic font-sf-pro cursor-pointer" onClick={() => setIsFeatured((v) => !v)}>
-                    Featured Property
-                  </label>
+                <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsFeatured((v) => !v)}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isFeatured ? "bg-mosque" : "bg-gray-200"}`}
+                    >
+                      <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform ${isFeatured ? "translate-x-6" : "translate-x-1"}`} />
+                    </button>
+                    <label className="text-sm font-medium text-nordic font-sf-pro cursor-pointer" onClick={() => setIsFeatured((v) => !v)}>
+                      Featured Property
+                    </label>
+                  </div>
+
+                  {/* Active toggle */}
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setIsActive((v) => !v)}
+                      className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${isActive ? "bg-hint-green" : "bg-gray-200"}`}
+                    >
+                      <span className={`inline-block h-4 w-4 rounded-full bg-white shadow transition-transform ${isActive ? "translate-x-6" : "translate-x-1"}`} />
+                    </button>
+                    <label className="text-sm font-medium text-nordic font-sf-pro cursor-pointer" onClick={() => setIsActive((v) => !v)}>
+                      Active Listing
+                    </label>
+                  </div>
                 </div>
               </div>
             </div>
