@@ -79,5 +79,22 @@
     "amenities": "Comodidades",
     "clear_all": "Borrar filtros",
     "search_homes": "Buscar Propiedades"
+  },
+  "schedule_visit_modal": {
+    "title": "Agendar una Visita",
+    "subtitle": "Elige una fecha y hora para recorrer la propiedad en persona.",
+    "agent_message": "Mensaje para el agente",
+    "optional": "(Opcional)",
+    "message_placeholder": "¿Alguna pregunta o solicitud específica?",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar Visita",
+    "hosted_by": "Organizado por",
+    "success_title": "¡Visita Agendada!",
+    "success_subtitle": "Tu visita ha sido solicitada con éxito. El agente se pondrá en contacto contigo a la brevedad para confirmar.",
+    "selected_date": "Fecha seleccionada",
+    "selected_time": "Hora seleccionada",
+    "close": "Cerrar",
+    "submitting": "Agendando...",
+    "error_db": "Nota: guardado localmente para demostración (tabla de base de datos no inicializada)."
   }
 }

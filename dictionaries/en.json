@@ -79,5 +79,22 @@
     "amenities": "Amenities & Features",
     "clear_all": "Clear all filters",
     "search_homes": "Search Homes"
+  },
+  "schedule_visit_modal": {
+    "title": "Schedule a Viewing",
+    "subtitle": "Choose a date and time to tour the property in person.",
+    "agent_message": "Message for the agent",
+    "optional": "(Optional)",
+    "message_placeholder": "Any specific questions or requests?",
+    "cancel": "Cancel",
+    "confirm": "Confirm Visit",
+    "hosted_by": "Hosted by",
+    "success_title": "Visit Scheduled!",
+    "success_subtitle": "Your visit has been successfully requested. The agent will contact you shortly to confirm.",
+    "selected_date": "Selected Date",
+    "selected_time": "Selected Time",
+    "close": "Close",
+    "submitting": "Scheduling...",
+    "error_db": "Note: saved locally for demonstration (database table not initialized)."
   }
 }

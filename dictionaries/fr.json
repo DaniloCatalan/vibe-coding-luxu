@@ -66,7 +66,7 @@
     "back_to_home": "Retour à l'Accueil"
   },
   "filters_modal": {
-    "title": "Filtres",
+    "title": "Filtros",
     "location": "Emplacement",
     "location_placeholder": "Ville, quartier ou adresse",
     "price_range": "Fourchette de Prix",
@@ -79,5 +79,22 @@
     "amenities": "Commodités",
     "clear_all": "Effacer les filtres",
     "search_homes": "Rechercher des Propriétés"
+  },
+  "schedule_visit_modal": {
+    "title": "Planifier une Visite",
+    "subtitle": "Choisissez une date et une heure pour visiter la propriété en personne.",
+    "agent_message": "Message pour l'agent",
+    "optional": "(Optionnel)",
+    "message_placeholder": "Des questions ou demandes particulières ?",
+    "cancel": "Annuler",
+    "confirm": "Confirmer la Visite",
+    "hosted_by": "Organisé par",
+    "success_title": "Visite Planifiée !",
+    "success_subtitle": "Votre visite a été demandée avec succès. L'agent vous contactera sous peu pour confirmer.",
+    "selected_date": "Date sélectionnée",
+    "selected_time": "Heure sélectionnée",
+    "close": "Fermer",
+    "submitting": "Planification...",
+    "error_db": "Remarque : enregistré localement pour démonstration (table de base de données non initialisée)."
   }
 }

@@ -4,7 +4,9 @@ import Image from 'next/image';
 import { getPropertyBySlug } from '@/lib/properties';
 import PropertyMapClient from '@/components/properties/PropertyMapClient';
 import { getLocale, getDictionary } from '@/lib/i18n/server';
+import ScheduleVisitSection from '@/components/properties/ScheduleVisitSection';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const getNestedValue = (obj: any, path: string): string => {
   return path.split('.').reduce((acc, part) => acc && acc[part], obj) || path;
 };
@@ -125,16 +127,7 @@ export default async function PropertyPage({ params }: { params: Promise<{ slug:
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <button className="w-full bg-mosque hover:bg-primary-hover text-white py-4 px-6 rounded-lg font-medium transition-all shadow-lg shadow-mosque/20 flex items-center justify-center gap-2 group">
-                  <span className="material-icons text-xl group-hover:scale-110 transition-transform">calendar_today</span>
-                  {t('property_page.schedule_visit')}
-                </button>
-                <button className="w-full bg-transparent border border-nordic-dark/10 hover:border-mosque text-nordic-dark/80 hover:text-mosque py-4 px-6 rounded-lg font-medium transition-all flex items-center justify-center gap-2">
-                  <span className="material-icons text-xl">mail_outline</span>
-                  {t('property_page.contact_agent')}
-                </button>
-              </div>
+              <ScheduleVisitSection property={property} />
             </div>
 
             {/* Map Area */}
